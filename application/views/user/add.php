@@ -42,9 +42,9 @@
 	</div>
 	
 	<div class="form-group">
-		<div class="col-sm-offset-4 col-sm-8">
-			<a class="btn btn-danger" href="<?= site_url(); ?>">Cancel</a>         
+		<div class="col-sm-offset-4 col-sm-8">       
 			<button type="submit" class="btn btn-success">Save</button>
+			<a class="btn btn-danger" href="<?= site_url(); ?>">Cancel</a>             
         </div>
 	</div>
 <?php echo form_close(); ?>
