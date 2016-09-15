@@ -1,15 +1,16 @@
 <html>
     <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="<?php echo site_url("../assets/css/bootstrap-3.3.7/bootstrap.min.css"); ?>">
+    <link rel="stylesheet" href="<?php echo site_url("../assets/css/bootstrap-3.3.7/bootstrap-theme.min.css"); ?>">
     <link rel="stylesheet" href="<?php echo site_url("../assets/css/custom.css"); ?>">
-    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>       
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="<?php echo site_url("../assets/js/jquery/jquery-3.1.0.min.js"); ?>"></script>       
+    <script src="<?php echo site_url("../assets/js/bootstrap-3.3.7/bootstrap.min.js"); ?>"></script>       
     <?php if (isset($validate_user)) { ?>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.1/jquery.validate.min.js"  crossorigin="anonymous"></script>
+    <script src="<?php echo site_url("../assets/js/jquery-validation-1.15.0/jquery.validate.min.js"); ?>"></script>       
     <?php } if (isset($dob_format)) { ?>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"  crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css" crossorigin="anonymous">
+    <script src="<?php echo site_url("../assets/js/bootstrap-datepicker-1.6.4/bootstrap-datepicker.min.js"); ?>"></script>       
+    <link rel="stylesheet" href="<?php echo site_url("../assets/css/bootstrap-datepicker-1.6.4/bootstrap-datepicker.min.css"); ?>">
     <?php }  if (isset($color_format)) { ?>
     <script src="<?php echo site_url('../assets/js/jquery-minicolors-master/jquery.minicolors.min.js'); ?>"></script>
     <link rel="stylesheet" href="<?php echo site_url('../assets/js/jquery-minicolors-master/jquery.minicolors.css'); ?>">
@@ -17,7 +18,6 @@
     <title><?php echo $title; ?></title>
     </head>
     <body>
-    <!-- Wrap all page content here -->
 	<div id="wrap">    
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
