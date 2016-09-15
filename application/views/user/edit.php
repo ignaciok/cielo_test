@@ -1,5 +1,6 @@
 <?php echo validation_errors(); ?>
 <?php echo form_open('user/edit/'.$user['idx'],array("class"=>"form","name"=>"user_edit")); ?>
+
 	<div class="form-group">
 		<label for="first_name" class="col-md-4 control-label">First Name</label>
 		<div class="col-md-8">
@@ -27,7 +28,7 @@
 	<div class="form-group">
 		<label for="favorite color" class="col-md-4 control-label">Favorite Color</label>
 		<div class="col-md-8">
-			<input type="text" name="favorite_color" value="<?php echo ($this->input->post('favorite_color') ? $this->input->post('favorite_color') : $user['favorite_color']); ?>" class="form-control" id="favorite_color" />
+			<input type="hidden" name="favorite_color" value="<?php echo ($this->input->post('favorite_color') ? $this->input->post('favorite_color') : $user['favorite_color']); ?>" class="form-control" id="favorite_color" />
 		</div>
 	</div>
 	

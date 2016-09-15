@@ -30,6 +30,7 @@ class User extends CI_Controller
 
 		$this->form_validation->set_rules('first_name','First Name','min_length[2]|max_length[60]|required');
 		$this->form_validation->set_rules('last_name','Last Name','min_length[2]|max_length[60]|required');
+		$this->form_validation->set_rules('dob','Date of Birth','trim|callback_check_date|required'); 
 		$this->form_validation->set_rules('email','Email','max_length[100]|valid_email|required|is_unique[users.email]');
 		
 		if($this->form_validation->run())     
@@ -60,6 +61,58 @@ class User extends CI_Controller
         }
     }  
 
+	// Add a New user (Ajax)
+    function add_ajax()
+    {   
+        $this->load->library('form_validation');
+		$data['validate_user'] = false;	
+		$data['validate_user_ajax'] = true;
+		$data['dob_format'] = true;
+		$data['color_format'] = true;
+		$data['title'] = 'Add User';	
+		$data['subtitle'] = 'AJAX Version';			
+		$this->load->view('templates/header', $data);	
+        $this->load->view('user/add',$data);
+		$this->load->view('templates/footer', $data);				
+    }  
+
+	// Add a new user via AJAX and return JSON
+    function add_ajax_json()
+    {   
+        $this->load->library('form_validation');
+
+		$this->form_validation->set_rules('first_name','First Name','min_length[2]|max_length[60]|required');
+		$this->form_validation->set_rules('last_name','Last Name','min_length[2]|max_length[60]|required');
+		$this->form_validation->set_rules('dob','Date of Birth','trim|callback_check_date|required'); 
+		$this->form_validation->set_rules('email','Email','max_length[100]|valid_email|required|is_unique[users.email]');
+		
+		if($this->form_validation->run())     
+        {   
+            $params = array(
+				'first_name' => $this->input->post('first_name'),
+				'last_name' => $this->input->post('last_name'),
+				'dob' => date("Y-m-d", strtotime($this->input->post('dob'))),
+				'email' => $this->input->post('email'),
+				'favorite_color' => $this->input->post('favorite_color'),
+            );
+            
+            if ($user_id = $this->User_model->add_user($params))
+				{
+				echo json_encode(array("status" => true));
+				}
+			else
+				{
+				echo json_encode(array("status" => false));
+				}
+        }
+        else
+        {
+			echo json_encode(array("status" => false));
+		}
+
+
+	}
+
     //Edit User
     function edit($idx)
     {   
@@ -73,6 +126,7 @@ class User extends CI_Controller
 
 			$this->form_validation->set_rules('first_name','First Name','min_length[2]|max_length[60]|required');
 			$this->form_validation->set_rules('last_name','Last Name','min_length[2]|max_length[60]|required');
+			$this->form_validation->set_rules('dob','Date of Birth','trim|callback_check_date|required'); 
 			$this->form_validation->set_rules('email','Email','max_length[100]|valid_email|required'.$is_unique);
 			if($this->form_validation->run())     
             {   
@@ -120,6 +174,16 @@ class User extends CI_Controller
             show_error('The user does not exist.');
     }
 	
-
+	// Check date format	
+	public function check_date($date)
+	{
+	$mdy = explode('/',$date);
+	if((sizeof($mdy)!=3) or !checkdate((int) $mdy[0],(int) $mdy[1], (int) $mdy[2]))
+	{
+		  $this->form_validation->set_message('check_date', 'The date inside the {field} field is not valid.');
+		  return FALSE;
+	}
+	return TRUE;
+	}
 	
 }
