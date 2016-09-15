@@ -50,14 +50,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 
-// /index.php/pages/view/about se accede por index.php/about
-
 $route['(:any)'] = 'users/view/$1';
 $route['default_controller'] = 'user/index';
 
 $route['users/(:any)'] = 'user/view/$1';
 $route['users'] = 'user';
-
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

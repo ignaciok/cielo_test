@@ -1,13 +1,10 @@
-	<?php if (validation_errors() != "")
-	{ ?>
+<?php if (validation_errors() != "") { ?>
 	<div class="alert alert-danger fade in">
     <a href="#" class="close" data-dismiss="alert">&times;</a>
     <?= validation_errors(); ?>
     </div>
-    <?php } 
-	?>
+<?php } ?>
 <?php echo form_open('user/edit/'.$user['idx'],array("class"=>"form","name"=>"user_edit")); ?>
-
 	<div class="form-group">
 		<label for="first_name" class="col-md-4 control-label">First Name</label>
 		<div class="col-md-8">
@@ -45,5 +42,4 @@
 			<a class="btn btn-danger" href="<?= site_url(); ?>">Cancel</a> 
         </div>
 	</div>
-	
 <?php echo form_close(); ?>

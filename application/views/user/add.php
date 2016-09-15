@@ -1,11 +1,9 @@
-	<?php if (validation_errors() != "")
-	{ ?>
+<?php if (validation_errors() != "") { ?>
 	<div class="alert alert-danger fade in">
     <a href="#" class="close" data-dismiss="alert">&times;</a>
     <?= validation_errors(); ?>
     </div>
-    <?php } 
-	?>
+<?php } ?>
     <div id="message"></div>
 	<?php echo form_open('user/add',array("class"=>"form","name"=>"user_add","id"=>"user_add")); ?>
 	<div class="form-group">

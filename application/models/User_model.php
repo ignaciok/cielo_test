@@ -8,25 +8,25 @@ class User_model extends CI_Model
 	   $this->load->database();
     }
     
-    // Get User by IDX
+    // Get User by idx
     function get_user($idx)
     {
         return $this->db->get_where('users',array('idx'=>$idx))->row_array();
     }
     
-    //Get all Users
+    // Get all Users
     function get_all_users()
     {
         return $this->db->get('users')->result_array();
     }
     
-    //Count all Users
+    // Count all Users
     function count_all_users()
     {
         return $this->db->count_all('users');
     }	
 	
-    //Get Users with limit
+    // Get Users with limit
     function get_x_users($limit_perpage, $offset)
     {
         $this->db->limit($limit_perpage, $offset);
@@ -58,7 +58,7 @@ class User_model extends CI_Model
         }
     }
     
-    //Delete User
+    // Delete User
     function delete_user($idx)
     {
         $response = $this->db->delete('users',array('idx'=>$idx));
@@ -72,3 +72,5 @@ class User_model extends CI_Model
         }
     }
 }
+
+?>

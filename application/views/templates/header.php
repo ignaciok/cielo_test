@@ -3,7 +3,6 @@
     <link rel="stylesheet" href="<?php echo site_url("../assets/css/bootstrap-3.3.7/bootstrap.min.css"); ?>">
     <link rel="stylesheet" href="<?php echo site_url("../assets/css/bootstrap-3.3.7/bootstrap-theme.min.css"); ?>">
     <link rel="stylesheet" href="<?php echo site_url("../assets/css/custom.css"); ?>">
-
     <script src="<?php echo site_url("../assets/js/jquery/jquery-3.1.0.min.js"); ?>"></script>       
     <script src="<?php echo site_url("../assets/js/bootstrap-3.3.7/bootstrap.min.js"); ?>"></script>       
     <?php if (isset($validate_user)) { ?>
@@ -15,6 +14,7 @@
     <script src="<?php echo site_url('../assets/js/jquery-minicolors-master/jquery.minicolors.min.js'); ?>"></script>
     <link rel="stylesheet" href="<?php echo site_url('../assets/js/jquery-minicolors-master/jquery.minicolors.css'); ?>">
     <?php } ?>    
+	<link rel="icon" type="image/png" href="<?php echo site_url("../assets/img/favicon.ico"); ?>">    
     <title><?php echo $title; ?></title>
     </head>
     <body>
@@ -59,3 +59,4 @@
             </div>
         <?php } ?>  
         <div>
+ 
