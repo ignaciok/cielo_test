@@ -5,7 +5,7 @@ class User extends CI_Controller
     function __construct()
     {
         parent::__construct();
-		// Ver Luego si va aca o en CI_Controller
+		// Session used for message
 		$this->load->library('session');
         $this->load->model('User_model');
 		$this->load->helper('url_helper');

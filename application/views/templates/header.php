@@ -52,4 +52,9 @@
       <?php if(isset($subtitle)) { echo '<small>'.$subtitle.'</small>'; } ?>
    </h1>
 </div>
-
+<?php if ($this->session->flashdata('message') != "") { ?>      
+    <div class="alert alert-<?= $this->session->flashdata('color'); ?> fade in">
+    <a href="#" class="close" data-dismiss="alert">&times;</a>
+    <?php echo $this->session->flashdata('message'); ?>
+    </div>
+<?php } ?>  
