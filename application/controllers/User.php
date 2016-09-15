@@ -87,6 +87,7 @@ class User extends CI_Controller
 		$this->form_validation->set_rules('dob','Date of Birth','trim|callback_check_date|required'); 
 		$this->form_validation->set_rules('email','Email','max_length[100]|valid_email|required|is_unique[users.email]');
 		$this->form_validation->set_message('is_unique', 'The e-mail is registered to another user');
+		$this->form_validation->set_error_delimiters("\r\n", "\r\n");
 		
 		if($this->form_validation->run())     
         {   
@@ -104,12 +105,12 @@ class User extends CI_Controller
 				}
 			else
 				{
-				echo json_encode(array("status" => false));
+				echo json_encode(array("status" => false,"info"=>'The insert has failed'));
 				}
         }
         else
         {
-			echo json_encode(array("status" => false));
+			echo json_encode(array("status" => false,"info"=>"Form validation has failed: ".validation_errors()));
 		}
 
 

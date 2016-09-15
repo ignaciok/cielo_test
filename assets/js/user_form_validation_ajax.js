@@ -55,13 +55,21 @@ $(function() {
                  type: "POST",
                  url: "add_ajax_json",
                  data: $(form).serialize(),
-                 success: function () {
+                 success: function (msg) {
+					 var rsp = JSON.parse(msg);
+					 if (rsp.status == true) 
+					 {
                      $(form).html("<div id='message'></div>");
                      $('#message').html("<h2>User created successfully!</h2>")
                          .hide()
                          .fadeIn(1500, function () {
                          $('#message').append("<p>Go back to the <a href=\"index\">user list</a></p>");
                      });
+					 }
+					 else
+					 {
+					 alert(rsp.info);
+					 }
                  },
 				 error: function () {
                      $('#message').html("The user creation has failed. Please check the values and try again");}
