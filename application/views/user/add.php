@@ -6,7 +6,8 @@
     </div>
     <?php } 
 	?>
-	<?php echo form_open('user/add',array("class"=>"form","name"=>"user_add")); ?>
+    <div id="message"></div>
+	<?php echo form_open('user/add',array("class"=>"form","name"=>"user_add","id"=>"user_add")); ?>
 	<div class="form-group">
 		<label for="first_name" class="col-md-4 control-label">First Name</label>
 		<div class="col-md-8">

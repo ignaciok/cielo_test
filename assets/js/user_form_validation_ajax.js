@@ -57,21 +57,22 @@ $(function() {
                  data: $(form).serialize(),
                  success: function (msg) {
 					 var rsp = JSON.parse(msg);
+					 var rsphtml = '';
 					 if (rsp.status == true) 
 					 {
-                     $(form).html("<div id='message'></div>");
-                     $('#message').html("<h2>User created successfully!</h2>")
-                         .hide()
-                         .fadeIn(1500, function () {
-                         $('#message').append("<p>Go back to the <a href=\"index\">user list</a></p>");
-                     });
+					 rsphtml = '<h3>User created successfully!</h3><p>You can go back to the <a href=\"index\">user list</a> or continue adding users</p>'
+					 $("#user_add").trigger("reset");
 					 }
 					 else
 					 {
-					 alert(rsp.info);
+					 rsphtml = '<h3>Error in user creation</h3>'+rsp.info;
 					 }
+                     $('#message').html(rsphtml)
+                         .hide()
+                         .fadeIn(1500);
                  },
 				 error: function () {
+					 
                      $('#message').html("The user creation has failed. Please check the values and try again");}
              });
              return false;
