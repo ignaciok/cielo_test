@@ -1,11 +1,11 @@
+
 		</div>
 	</div>
 </div>
-
 <div id="footer">
-      <div class="container">
-        <p class="text-muted">This is a demo for the CIELO Team by Ignacio Kassis</p>
-      </div>
+    <div class="container">
+    <p class="text-muted">This is a demo for the CIELO Team by Ignacio Kassis</p>
+    </div>
 </div>
 <?php 
 	if (isset($validate_user) && $validate_user === true) { ?>
@@ -33,8 +33,7 @@
 					{
 					animationSpeed: 50,
 					animationEasing: 'swing',
-					format: 'hex',
-					
+					format: 'hex',			
 					}
 				);
             });

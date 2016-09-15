@@ -32,7 +32,8 @@ class User extends CI_Controller
 		$this->form_validation->set_rules('last_name','Last Name','min_length[2]|max_length[60]|required');
 		$this->form_validation->set_rules('dob','Date of Birth','trim|callback_check_date|required'); 
 		$this->form_validation->set_rules('email','Email','max_length[100]|valid_email|required|is_unique[users.email]');
-		
+		$this->form_validation->set_message('is_unique', 'The e-mail is registered to another user');
+
 		if($this->form_validation->run())     
         {   
             $params = array(
@@ -85,6 +86,7 @@ class User extends CI_Controller
 		$this->form_validation->set_rules('last_name','Last Name','min_length[2]|max_length[60]|required');
 		$this->form_validation->set_rules('dob','Date of Birth','trim|callback_check_date|required'); 
 		$this->form_validation->set_rules('email','Email','max_length[100]|valid_email|required|is_unique[users.email]');
+		$this->form_validation->set_message('is_unique', 'The e-mail is registered to another user');
 		
 		if($this->form_validation->run())     
         {   
@@ -122,12 +124,24 @@ class User extends CI_Controller
         {
             $this->load->library('form_validation');
 
-			if ($this->input->post('email') != $user['email']) { $is_unique = '|is_unique[users.email]'; } else { $is_unique = ''; }
 
 			$this->form_validation->set_rules('first_name','First Name','min_length[2]|max_length[60]|required');
 			$this->form_validation->set_rules('last_name','Last Name','min_length[2]|max_length[60]|required');
 			$this->form_validation->set_rules('dob','Date of Birth','trim|callback_check_date|required'); 
-			$this->form_validation->set_rules('email','Email','max_length[100]|valid_email|required'.$is_unique);
+
+			if ($this->input->post('email') != $user['email']) 
+			{ 
+			$this->form_validation->set_rules('email','Email','max_length[100]|valid_email|required|is_unique[users.email]');
+			$this->form_validation->set_message('is_unique', 'The e-mail is registered to another user');
+			} 
+			else 
+			{ 
+			$this->form_validation->set_rules('email','Email','max_length[100]|valid_email|required');
+			}
+			
+			
+			
+					
 			if($this->form_validation->run())     
             {   
                 $params = array(

@@ -1,5 +1,12 @@
-<?php echo validation_errors(); ?>
-<?php echo form_open('user/add',array("class"=>"form","name"=>"user_add")); ?>
+	<?php if (validation_errors() != "")
+	{ ?>
+	<div class="alert alert-danger fade in">
+    <a href="#" class="close" data-dismiss="alert">&times;</a>
+    <?= validation_errors(); ?>
+    </div>
+    <?php } 
+	?>
+	<?php echo form_open('user/add',array("class"=>"form","name"=>"user_add")); ?>
 	<div class="form-group">
 		<label for="first_name" class="col-md-4 control-label">First Name</label>
 		<div class="col-md-8">
@@ -38,5 +45,4 @@
 			<button type="submit" class="btn btn-success">Save</button>
         </div>
 	</div>
-
 <?php echo form_close(); ?>

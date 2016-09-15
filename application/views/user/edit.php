@@ -1,4 +1,11 @@
-<?php echo validation_errors(); ?>
+	<?php if (validation_errors() != "")
+	{ ?>
+	<div class="alert alert-danger fade in">
+    <a href="#" class="close" data-dismiss="alert">&times;</a>
+    <?= validation_errors(); ?>
+    </div>
+    <?php } 
+	?>
 <?php echo form_open('user/edit/'.$user['idx'],array("class"=>"form","name"=>"user_edit")); ?>
 
 	<div class="form-group">
