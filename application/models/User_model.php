@@ -20,6 +20,20 @@ class User_model extends CI_Model
         return $this->db->get('users')->result_array();
     }
     
+    //Count all Users
+    function count_all_users()
+    {
+        return $this->db->count_all('users');
+    }	
+	
+    //Get Users with limit
+    function get_x_users($limit_perpage, $offset)
+    {
+        $this->db->limit($limit_perpage, $offset);
+		return $this->db->get('users')->result_array();
+    }
+	
+	
     // Add New User
     function add_user($params)
     {

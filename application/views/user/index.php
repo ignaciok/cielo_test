@@ -3,6 +3,7 @@
 	<a href="<?php echo site_url('user/add'); ?>" class="btn btn-success">Add</a> 
 	<a href="<?php echo site_url('user/add_ajax'); ?>" class="btn btn-success">Add (with Ajax)</a>     
 </div>
+<?= $pagination; ?>
 <table class="table table-striped table-hover">
     <tr>
 		<th>First Name</th>
@@ -26,6 +27,7 @@
     </tr>
 	<?php } ?>
 </table>
+<?= $pagination; ?>
 </div>
 <script>
 var todelete = document.querySelectorAll('.delete_item');

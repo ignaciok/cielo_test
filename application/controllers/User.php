@@ -14,9 +14,48 @@ class User extends CI_Controller
     // List Users
     function index()
     {
-        $data['users'] = $this->User_model->get_all_users();
+		$this->load->library('pagination');
+		$config = array();
+        $config['total_rows']=$this->User_model->count_all_users();
+		$config['uri_segment'] = 3;		
+		$config["base_url"] = base_url()."index.php/user/index";
+		$config['per_page'] = 5;
+		
+		
+        // Bootstrap pagination class integration
+        $config['full_tag_open'] = '<ul class="pagination">';
+        $config['full_tag_close'] = '</ul>';
+        $config['first_link'] = false;
+        $config['last_link'] = false;
+        $config['first_tag_open'] = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['prev_link'] = '&laquo';
+        $config['prev_tag_open'] = '<li class="prev">';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = '&raquo';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['last_tag_open'] = '<li>';
+        $config['last_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="active"><a href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+
+		
+		
+		
+		
+		$this->pagination->initialize($config);			
+
+
+		$offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+		$data['pagination']=$this->pagination->create_links();
+        $data['users'] = $this->User_model->get_x_users($config['per_page'],$offset);			
 		$data['title'] = 'User List';
 		$data['subtitle'] = 'All Users';
+		
 		$this->load->view('templates/header', $data);	
         $this->load->view('user/index',$data);
 		$this->load->view('templates/footer', $data);		

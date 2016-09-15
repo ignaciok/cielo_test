@@ -4,7 +4,7 @@
 </div>
 <div id="footer">
     <div class="container">
-    <p class="text-muted">This is a demo for the CIELO Team by Ignacio Kassis</p>
+    <p class="text-muted">This is a demo for the CIELO Team by Ignacio Kassis - <strong>{elapsed_time}</strong> secs</p>
     </div>
 </div>
 <?php 
